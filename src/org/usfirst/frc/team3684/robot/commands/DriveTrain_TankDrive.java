@@ -1,5 +1,4 @@
 package org.usfirst.frc.team3684.robot.commands;
-
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team3684.robot.Robot;
 /**
@@ -33,7 +32,7 @@ public class DriveTrain_TankDrive extends Command {
         leftPower = (Math.abs(leftPower) < deadzone)? 0 : leftPower;
         rightPower = (Math.abs(rightPower) < deadzone)? 0 : rightPower;
         
-        Robot.driveTrain.setMotors(leftPower, rightPower);
+        Robot.driveTrain.setMotors(-leftPower, rightPower);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,6 +42,7 @@ public class DriveTrain_TankDrive extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.setMotors(0, 0);
     }
 
     // Called when another command which requires one or more of the same

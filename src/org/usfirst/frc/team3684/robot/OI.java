@@ -7,7 +7,16 @@
 
 package org.usfirst.frc.team3684.robot;
 
+import org.usfirst.frc.team3684.robot.commands.ClawIntake;
+import org.usfirst.frc.team3684.robot.commands.ClawOutput;
+import org.usfirst.frc.team3684.robot.commands.MoveLiftDOWN;
+import org.usfirst.frc.team3684.robot.commands.MoveLiftUP;
+import org.usfirst.frc.team3684.robot.commands.Turnleft;
+import org.usfirst.frc.team3684.robot.commands.Turnright;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -18,6 +27,26 @@ public class OI {
 	
 	public Joystick m_leftstick= new Joystick(RobotMap.LEFT_JOYSTICK_USB_PORT_0);
 	public Joystick m_rightstick= new Joystick(RobotMap.RIGHT_JOYSTICK_USB_PORT_1);
+	
+	
+	
+	
+	public OI() {
+	//creating buttons
+	Button left_trigger= new JoystickButton(m_leftstick, RobotMap.CLAWBUTTONclose);
+	Button rightbutton0 = new JoystickButton (m_rightstick, RobotMap.ForkliftUp);
+	Button rightbutton1= new JoystickButton (m_rightstick, RobotMap.ForkliftDown);
+	Button rightbutton5= new JoystickButton (m_rightstick, RobotMap.Turn_Right);
+	Button leftbutton5= new JoystickButton (m_leftstick, RobotMap.Turn_Left);
+	Button leftbutton1= new JoystickButton (m_leftstick, RobotMap.CLAWBUTTONopen);
+	//binding buttons to commands
+	left_trigger.whileHeld(new ClawOutput());
+	rightbutton0.whileHeld(new MoveLiftUP());
+	rightbutton1.whileHeld(new MoveLiftDOWN());
+	rightbutton5.whileHeld(new Turnright());
+	leftbutton5.whileHeld(new Turnleft());
+	
+	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.

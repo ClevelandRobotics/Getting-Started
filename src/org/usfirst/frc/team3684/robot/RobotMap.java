@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team3684.robot;
+import edu.wpi.first.wpilibj.GenericHID;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -25,7 +26,21 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	public static final int LEFT_JOYSTICK_USB_PORT_0 = 0;
 	public static final int RIGHT_JOYSTICK_USB_PORT_1 = 1;
+	public static final int CLAWBUTTONopen = 2;
+	public static final int CLAWBUTTONclose =3;
+	public static final int ForkliftUp =4;
+	public static final int ForkliftDown =6;
+	public static final int Turn_Right = 5;
+	public static final int Turn_Left = 5;
+			
 	
 	public static int DRIVETRAIN_Talon_LEFT = 0;
 	public static int DRIVETRAIN_Talon_RIGHT = 1;
-}
+	public static int DRIVETRAIN_Talon_BACKLEFT = 2;
+	public static int DRIVETRAIN_Talon_BACKRIGHT = 3;
+	public static int LiftMotorUp = 4;
+	public static int LiftMotorDown = 5;
+	public static int ClawMotor1 = 6;
+	public static int ClawMotor2 = 7;
+	}
+

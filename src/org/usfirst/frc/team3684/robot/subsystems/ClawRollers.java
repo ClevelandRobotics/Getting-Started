@@ -1,33 +1,32 @@
 package org.usfirst.frc.team3684.robot.subsystems;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import com.ctre.phoenix.motorcontrol.can.CANTalon;
+
 import org.usfirst.frc.team3684.robot.RobotMap;
-import org.usfirst.frc.team3684.robot.commands.DriveTrain_TankDrive;
+
+import com.ctre.phoenix.motorcontrol.can.CANTalon;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team3684.robot.commands.ClawIntake;
 /**
  *
  */
-public class Drivetrain extends Subsystem {
+public class ClawRollers extends Subsystem {
 	
-	public CANTalon leftMotor;
-	public CANTalon rightMotor;
-	public CANTalon backleftMotor;
-	public CANTalon backrightMotor;
-	
-	public Drivetrain() {
-	
-		leftMotor = new CANTalon(RobotMap.DRIVETRAIN_Talon_LEFT);
-		rightMotor = new CANTalon(RobotMap.DRIVETRAIN_Talon_RIGHT);
-		backleftMotor = new CANTalon (RobotMap.DRIVETRAIN_Talon_BACKLEFT);
-		backrightMotor = new CANTalon (RobotMap.DRIVETRAIN_Talon_BACKRIGHT);
-		
+	public CANTalon m_clawmotor1;
+	public CANTalon m_clawmotor2;
+	public ClawRollers() {
+		m_clawmotor1 = new CANTalon (RobotMap.ClawMotor1);
+		m_clawmotor2 = new CANTalon (RobotMap.ClawMotor2);
 	}
-	
-	  public void initDefaultCommand() {
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+
+    public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new DriveTrain_TankDrive());
+        //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new ClawIntake());
     }
-	
-	public void setMotors(double left, double right) {
+    
+    public void setMotors(double left, double right) {
     	left = scaleLeft(left);
     	right = scaleRight(right);
     	
@@ -38,17 +37,13 @@ public class Drivetrain extends Subsystem {
     	left = safetyTest(left);
     	right = safetyTest(right);
     	
-    	leftMotor.set(left);
-    	backleftMotor.set(left);
-    	rightMotor.set(right);		
-    	backrightMotor.set(right);
+    	m_clawmotor1.set(left);
+    	m_clawmotor2.set(right);
 	}
     
     public void stop() {
-    	leftMotor.set(0);
-    	backleftMotor.set(0);
-    	rightMotor.set(0);		
-    	backrightMotor.set(0);
+    	m_clawmotor1.set(0);
+    	m_clawmotor2.set(0);
     }
     
     private double safetyTest(double motorValue) {
@@ -65,7 +60,6 @@ public class Drivetrain extends Subsystem {
     private double scaleRight(double right) {
     	return 1.0 * right;
     }
-    
 
 //public final CANTalon leftFrontDrive;
 //public final CANTalon leftRearDrive;
@@ -83,5 +77,15 @@ public class Drivetrain extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+
+
+    
+    
+    
+    
+    
+    
+    
 
 
